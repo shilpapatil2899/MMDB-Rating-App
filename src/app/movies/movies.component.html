@@ -1,0 +1,21 @@
+<!-- movies.component.html -->
+
+<div class="navbar navbar-light bg-primary justify-content-between">
+  <div class="text-left">
+    <a href="/movies" class="navbar-brand text-light p-2"><h3>MMDb</h3></a>
+  </div>
+
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" name="search" [(ngModel)]="searchQuery" placeholder="Search..." aria-label="Search">
+    <button class="btn btn-outline-light" type="button" (click)="searchMovies()">Search</button>
+  </form>
+</div>
+
+<div class="container-fluid justify-content-center" *ngIf="moviedetails">
+  <div class="search-movies-list px-5 py-1">
+    <div *ngFor="let movie of movies" class="movie-card p-3" (click)="showMovieDetails(movie)">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="movie-poster" alt="{{ movie.title }} Poster">
+      <p class="movie-rating px-4">{{movie.title}} {{ movie.vote_average }}</p>
+    </div>
+  </div>
+</div>
